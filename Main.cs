@@ -52,6 +52,8 @@ namespace ModBaseMaker
 
             ZipFile.ExtractToDirectory(textBox2.Text + "\\ModBase.zip", TempDir); // ModBaseTempDir/ModBase/projfiles
 
+            File.Delete(textBox2.Text + "\\ModBase.zip"));
+
             var ProjDir = TempDir + "\\ModBase";
 
             File.WriteAllText(ProjDir + "\\MainClass.cs",
