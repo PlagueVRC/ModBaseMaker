@@ -68,6 +68,10 @@ namespace ModBaseMaker
                 File.ReadAllText(ProjDir + "\\Misc Classes.cs")
                     .Replace("ModBase", $"{textBox3.Text.Replace(" ", "")}"));
 
+            File.WriteAllText(ProjDir + "\\ExampleModule.cs",
+                File.ReadAllText(ProjDir + "\\ExampleModule.cs")
+                    .Replace("ModBase", $"{textBox3.Text.Replace(" ", "")}"));
+
             File.WriteAllText(ProjDir + "\\Properties\\AssemblyInfo.cs",
                 File.ReadAllText(ProjDir + "\\Properties\\AssemblyInfo.cs")
                     .Replace("\"ModBase", $"\"{textBox3.Text}")
