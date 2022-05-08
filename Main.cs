@@ -39,6 +39,34 @@ namespace ModBaseMaker
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(textBox1.Text) || !string.IsNullOrEmpty(textBox2.Text) || !string.IsNullOrEmpty(textBox3.Text) || !string.IsNullOrEmpty(textBox4.Text))
+            {
+                MessageBox.Show("One Of The Above Required Fields Is Missing!", "Error");
+
+                return;
+            }
+
+            if (!File.Exists(textBox1.Text + "\\GameAssembly.dll"))
+            {
+                MessageBox.Show("Invalid VRChat Folder!", "Error");
+
+                return;
+            }
+
+            if (!Directory.Exists(textBox1.Text + "\\MelonLoader"))
+            {
+                MessageBox.Show("MelonLoader Is Not Installed!", "Error");
+
+                return;
+            }
+
+            if (!File.Exists(textBox1.Text + "\\Mods\\PlagueButtonAPI.dll"))
+            {
+                MessageBox.Show("PlagueButtonAPI Is Not Installed!", "Error");
+
+                return;
+            }
+
             // Write ModBase.zip To Output Temporarily
             WriteResourceToFile("ModBaseMaker.Resources.ModBase.zip", textBox2.Text + "\\ModBase.zip");
 
@@ -96,6 +124,8 @@ namespace ModBaseMaker
             Directory.Move(ProjDir, textBox2.Text + $"\\{textBox3.Text.Replace(" ", "")}");
 
             Directory.Delete(TempDir);
+
+            MessageBox.Show("Done!", "Success");
         }
 
         public void WriteResourceToFile(string resourceName, string fileName)
